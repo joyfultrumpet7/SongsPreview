@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player - I Give Your Praise</title>
+    <title>Joyful Trumpet - Music Player</title>
     <style>
         * {
             margin: 0;
@@ -12,17 +12,21 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #4a5568 100%);
             min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .cross-container {
-            margin: 30px 0;
+            text-align: center;
+            margin: 20px 0;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -31,42 +35,11 @@
             transform: scale(1.1);
         }
 
-        .header-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .logo-frame {
-            width: 130px;
-            height: 130px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: 5px solid #333;
-            border-radius: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo-placeholder {
-            font-size: 60px;
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-        }
-
-        .logo-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 90px;
-        }
-
         .cross {
             width: 60px;
             height: 80px;
             position: relative;
+            display: inline-block;
         }
 
         .cross::before,
@@ -92,6 +65,204 @@
             transform: translateX(-50%);
         }
 
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: #f5f5dc;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .youtube-subscription {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .youtube-subscription p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .youtube-button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .youtube-button-container h3 {
+            margin: 0;
+            font-size: 36px;
+            color: #f5f5dc;
+        }
+
+        .youtube-button-image {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .youtube-button-image:hover {
+            transform: scale(1.1);
+        }
+
+        .disclaimer {
+            background: rgba(245, 245, 220, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 245, 220, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px auto;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .disclaimer p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .songs-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .song-card {
+            background: rgba(245, 245, 220, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(245, 245, 220, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+            background: rgba(245, 245, 220, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .album-cover-frame {
+            width: 60%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .album-cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .song-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #f5f5dc;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .song-artist {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .release-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .youtube-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(255, 0, 0, 0.6);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 0, 0, 0.8);
+            font-size: 14px;
+        }
+
+        .youtube-btn:hover:not(:disabled) {
+            background: rgba(255, 0, 0, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+        }
+
+        .youtube-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: not-allowed;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            outline: none;
+        }
+
         .quote-modal {
             display: none;
             position: fixed;
@@ -99,7 +270,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -113,15 +284,16 @@
         .quote-content {
             background: #f5f5dc;
             padding: 40px;
-            border-radius: 15px;
+            border-radius: 20px;
             max-width: 600px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             animation: slideIn 0.3s ease;
+            margin: 20px;
         }
 
         .quote-text {
-            font-size: 24px;
+            font-size: 22px;
             font-style: italic;
             color: #333;
             margin-bottom: 20px;
@@ -150,136 +322,46 @@
             background: #764ba2;
         }
 
-        .container {
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        h1 {
-            color: #f5f5dc;
-            margin: 0;
-            font-size: 48px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .songs-grid {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 40px;
-            overflow-x: auto;
-            padding: 10px;
-            scroll-snap-type: x mandatory;
-        }
-
-        .songs-grid::-webkit-scrollbar {
-            height: 10px;
-        }
-
-        .songs-grid::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .songs-grid::-webkit-scrollbar-thumb {
-            background: #f5f5dc;
-            border-radius: 10px;
-        }
-
-        .song-card {
-            background: #f5f5dc;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-width: 320px;
-            scroll-snap-align: start;
-            flex-shrink: 0;
-        }
-
-        .song-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .album-cover-frame {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            border: 4px solid #333;
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-
-        .album-cover-placeholder {
-            font-size: 48px;
-            color: #f5f5dc;
-        }
-
-        .album-cover-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .song-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .song-artist {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .release-date {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .youtube-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 12px 20px;
-            background: #FF0000;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+        .contact-section {
             text-align: center;
-            font-weight: bold;
+            margin-top: 60px;
+            padding: 30px;
+        }
+
+        .contact-section a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-icon {
+            font-size: 64px;
             margin-bottom: 15px;
-            transition: background 0.3s ease;
-            border: none;
-            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
         }
 
-        .youtube-btn:hover:not(:disabled) {
-            background: #CC0000;
+        .contact-icon:hover {
+            transform: scale(1.1);
         }
 
-        .youtube-btn:disabled {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
-            opacity: 0.6;
+        .contact-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #f5f5dc;
         }
 
-        audio {
-            width: 100%;
-            outline: none;
+        .contact-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
         }
 
-        audio::-webkit-media-controls-panel {
-            background-color: #667eea;
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @keyframes fadeIn {
@@ -299,83 +381,183 @@
         }
 
         @media (max-width: 768px) {
-            .header-section {
-                flex-direction: column;
-                gap: 15px;
-                margin-bottom: 30px;
+            body {
+                padding: 20px 15px;
             }
 
-            .logo-frame {
-                width: 80px;
-                height: 80px;
+            .cross {
+                width: 50px;
+                height: 70px;
             }
 
-            .logo-placeholder {
-                font-size: 48px;
+            .cross::before {
+                width: 10px;
+                height: 70px;
+            }
+
+            .cross::after {
+                width: 45px;
+                height: 10px;
+                top: 18px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
             }
 
             h1 {
-                font-size: 32px;
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .youtube-button-container {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .youtube-button-container h3 {
+                font-size: 28px;
+            }
+
+            .youtube-button-image {
+                width: 65px;
+            }
+
+            .disclaimer {
+                padding: 18px;
+                margin: 25px auto;
+            }
+
+            .disclaimer p {
+                font-size: 14px;
             }
 
             .songs-grid {
-                gap: 15px;
+                gap: 25px;
+                margin-bottom: 50px;
             }
 
             .song-card {
-                min-width: 280px;
+                padding: 25px;
+            }
+
+            .album-cover-frame {
+                width: 80%;
+            }
+
+            .song-title {
+                font-size: 20px;
+            }
+
+            .song-artist {
+                font-size: 15px;
+            }
+
+            .release-date {
+                font-size: 13px;
+            }
+
+            .youtube-btn {
+                padding: 12px 18px;
+                font-size: 13px;
             }
 
             .quote-content {
                 padding: 30px 20px;
-                margin: 20px;
+                margin: 15px;
             }
 
             .quote-text {
-                font-size: 20px;
+                font-size: 19px;
+            }
+
+            .quote-reference {
+                font-size: 16px;
+            }
+
+            .contact-section {
+                margin-top: 50px;
+                padding: 25px 15px;
+            }
+
+            .contact-icon {
+                font-size: 56px;
+            }
+
+            .contact-section h2 {
+                font-size: 24px;
+            }
+
+            .contact-section p {
+                font-size: 16px;
+            }
+
+            footer {
+                font-size: 13px;
+                padding: 25px 15px;
+                margin-top: 35px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="cross-container" onclick="showQuote()">
-        <div class="cross"></div>
-    </div>
-
-    <div class="header-section">
-        <div class="logo-frame">
-            <img src="./Image/jt_3d.png" alt="Joyful Trumpet Logo" class="logo-image">
-        </div>
-        <h1>Joyful Trumpet</h1>
-    </div>
-
-    <div class="quote-modal" id="quoteModal">
-        <div class="quote-content">
-            <div class="quote-text" id="quoteText"></div>
-            <div class="quote-reference" id="quoteReference"></div>
-            <button class="close-quote" onclick="closeQuote()">Amen</button>
-        </div>
-    </div>
-
     <div class="container">
+        <div class="cross-container" onclick="showQuote()">
+            <div class="cross"></div>
+        </div>
+
+        <div class="header">
+            <div class="logo">
+                <img src="jt_3d.png" alt="Joyful Trumpet Logo" class="logo-image">
+            </div>
+            <h1>Joyful Trumpet</h1>
+            <p class="subtitle">(preview all unreleased songs)</p>
+            
+            <div class="youtube-subscription">
+                <p>↓ Subscribe to our YouTube channel and stay tuned ↓</p>
+                <div class="youtube-button-container">
+                    <h3>CLICK :</h3>
+                    <a href="https://www.youtube.com/@PitchTheory-07" target="_blank">
+                        <img src="youtube.png" alt="YouTube" class="youtube-button-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-modal" id="quoteModal">
+            <div class="quote-content">
+                <div class="quote-text" id="quoteText"></div>
+                <div class="quote-reference" id="quoteReference"></div>
+                <button class="close-quote" onclick="closeQuote()">Amen</button>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <p>⚠️ All rights to these songs are owned by Joyful Trumpet. Unauthorized reproduction or distribution is prohibited.</p>
+        </div>
+
         <div class="songs-grid">
             <div class="song-card">
-               <div class="album-cover-frame">
-                    <img src="./Cover Image/a1_c2.jpg" alt="Album Cover" class="album-cover-image">
+                <div class="album-cover-frame">
+                    <img src="a1_c2.jpg" alt="Album Cover" class="album-cover-image">
                 </div>
                 <div class="song-title">I Give Your Praise</div>
                 <div class="song-artist">Worship Song</div>
                 <div class="release-date">Expected Release: February 2026</div>
                 <button class="youtube-btn" disabled>YouTube Link Coming Soon</button>
-                <audio controls>
-                    <source src="./preview_song/igup_prev.mp3" type="audio/mpeg">
+                <audio class="audio-player" controls>
+                    <source src="igup_prev.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
 
             <div class="song-card">
                 <div class="album-cover-frame">
-                    <img src="./Cover Image/a2_c1.jpg" alt="Album Cover" class="album-cover-image">
+                    <img src="a2_c1.jpg" alt="Album Cover" class="album-cover-image">
                 </div>
                 <div class="song-title">Alpha and Omega</div>
                 <div class="song-artist">Worship Song</div>
@@ -383,29 +565,29 @@
                 <a href="https://www.youtube.com/watch?v=example1" target="_blank" class="youtube-btn">
                     ▶️ Watch on YouTube
                 </a>
-                <audio controls>
-                    <source src="./preview_song/aao_prev.mp3" type="audio/mpeg">
+                <audio class="audio-player" controls>
+                    <source src="aao_prev.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
 
             <div class="song-card">
                 <div class="album-cover-frame">
-                    <img src="./Cover Image/HCB_Cover_img.jpg" alt="Album Cover" class="album-cover-image">
+                    <img src="HCB_Cover_img.jpg" alt="Album Cover" class="album-cover-image">
                 </div>
                 <div class="song-title">He is Coming Back</div>
                 <div class="song-artist">Worship Song</div>
                 <div class="release-date">Expected Release: February 2026</div>
                 <button class="youtube-btn" disabled>YouTube Link Coming Soon</button>
-                <audio controls>
-                    <source src="./preview_song/HCB_prev.mp3" type="audio/mpeg">
+                <audio class="audio-player" controls>
+                    <source src="HCB_prev.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
 
             <div class="song-card">
                 <div class="album-cover-frame">
-                    <img src="./Cover Image/JCL_COVER_IMAGE.jpg" alt="Album Cover" class="album-cover-image">
+                    <img src="JCL_COVER_IMAGE.jpg" alt="Album Cover" class="album-cover-image">
                 </div>
                 <div class="song-title">Jesus Christ is Lord</div>
                 <div class="song-artist">Worship Song</div>
@@ -413,42 +595,38 @@
                 <a href="https://www.youtube.com/watch?v=example2" target="_blank" class="youtube-btn">
                     ▶️ Watch on YouTube
                 </a>
-                <audio controls>
-                    <source src="./preview_song/JCL_prev.mp3" type="audio/mpeg">
+                <audio class="audio-player" controls>
+                    <source src="JCL_prev.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
 
             <div class="song-card">
                 <div class="album-cover-frame">
-                    <img src="./Cover Image/JIS_COVER_IMAGE.jpg" alt="Album Cover" class="album-cover-image">
+                    <img src="JIS_COVER_IMAGE.jpg" alt="Album Cover" class="album-cover-image">
                 </div>
                 <div class="song-title">Jesus I Surrendar</div>
                 <div class="song-artist">Worship Song</div>
                 <div class="release-date">Expected Release: February 2026</div>
                 <button class="youtube-btn" disabled>YouTube Link Coming Soon</button>
-                <audio controls>
-                    <source src="./preview_song/JIS_prev.mp3" type="audio/mpeg">
+                <audio class="audio-player" controls>
+                    <source src="JIS_prev.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
             </div>
-
-            <!-- <div class="song-card">
-                <div class="album-cover-frame">
-                    <img src="./Cover Image/a2_c1.jpg" alt="Album Cover" class="album-cover-image">
-                </div>
-                <div class="song-title">Great Is Thy Faithfulness</div>
-                <div class="song-artist">Thomas Chisholm</div>
-                <div class="release-date">Expected Release: June 2026</div>
-                <a href="https://www.youtube.com/watch?v=example3" target="_blank" class="youtube-btn">
-                    ▶️ Watch on YouTube
-                </a>
-                <audio controls>
-                    <source src="sample6.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div> -->
         </div>
+
+        <div class="contact-section">
+            <a href="mailto:pitchtheory7@gmail.com">
+                <div class="contact-icon">✉️</div>
+                <h2>Contact Us</h2>
+                <p>pitchtheory7@gmail.com</p>
+            </a>
+        </div>
+
+        <footer>
+            © 2026 All rights owned by Joyful Trumpet
+        </footer>
     </div>
 
     <script>
@@ -522,13 +700,16 @@
         });
 
         // Pause all other audio players when one starts playing
-        const audioElements = document.querySelectorAll('audio');
-        audioElements.forEach(audio => {
-            audio.addEventListener('play', function() {
-                audioElements.forEach(otherAudio => {
-                    if (otherAudio !== audio) {
-                        otherAudio.pause();
-                    }
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioPlayers = document.querySelectorAll('.audio-player');
+            
+            audioPlayers.forEach(player => {
+                player.addEventListener('play', function() {
+                    audioPlayers.forEach(otherPlayer => {
+                        if (otherPlayer !== player) {
+                            otherPlayer.pause();
+                        }
+                    });
                 });
             });
         });
