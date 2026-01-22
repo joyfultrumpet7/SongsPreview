@@ -22,6 +22,59 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .social-media-container {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .social-media-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
         .cross-container {
@@ -385,6 +438,35 @@
                 padding: 20px 15px;
             }
 
+            .social-media-container {
+                position: relative;
+                right: 0;
+                top: 0;
+                align-items: center;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+
+            .social-media-text {
+                font-size: 13px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icon img {
+                width: 22px;
+                height: 22px;
+            }
+
             .cross {
                 width: 50px;
                 height: 70px;
@@ -506,6 +588,25 @@
 </head>
 <body>
     <div class="container">
+        <!-- Social Media Icons -->
+        <div class="social-media-container">
+            <div class="social-media-text">↓ Click to reach us ↓</div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/joyfultrumpet7/" target="_blank" class="social-icon" title="Instagram">
+                    <img src="ig.png" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@JoyfulTrumpet" target="_blank" class="social-icon" title="YouTube">
+                    <img src="YT.png" alt="YouTube">
+                </a>
+                <!--a href="https://www.threads.net/@joyfultrumpet7" target="_blank" class="social-icon" title="Threads">
+                    <img src="threads.png" alt="Threads"-->
+                </a>
+                <a href="https://x.com/JTrumpet81937" target="_blank" class="social-icon" title="X (Twitter)">
+                    <img src="X.jpg" alt="X">
+                </a>
+            </div>
+        </div>
+
         <div class="cross-container" onclick="showQuote()">
             <div class="cross"></div>
         </div>
@@ -718,5 +819,3 @@
     </script>
 </body>
 </html>
-
-
